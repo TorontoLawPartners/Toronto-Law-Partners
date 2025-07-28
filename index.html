@@ -931,7 +931,7 @@
                 </div>
                 <div id="w">
                     <p id="msg" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; margin-bottom: 5px; color: rgb(0, 0, 0); font-weight: bold;text-align: start;">How much have you lost?*</p>
-                    <input class="inputi" placeholder="e.g., $5000-$100000" id="subject" name="subject" onkeydown="Enter(event)">
+                    <input class="inputi" placeholder="e.g., $5000-$100000" id="amount" name="amount" onkeydown="Enter(event)">
                 </div>
                 <div id="w">
                     <p id="msg" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; margin-bottom: 5px; color: rgb(0, 0, 0); font-weight: bold;text-align: start;">Type of Scam/Issue*</p>
@@ -1036,7 +1036,46 @@
    </div>
     </div>
     </body>
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
+        function sendEmail() {
+    const emerInput = document.getElementById('name');
+    const emailiInput = document.getElementById('email');
+    const numberInput = document.getElementById('phone');
+    const amountInput = document.getElementById('amount')
+    const subjectInput = document.getElementById('subject');
+    const mesazhiInput = document.getElementById('message');
+    
+
+    const emer = emerInput.value;
+    const phone = numberInput.value;
+    const emaili = emailiInput.value;
+    const amount = amountInput.value
+    const mesazhi = mesazhiInput.value;
+    const subjekti = subjectInput.value;
+
+    var emailData = {
+        to_email: "support@financialdepartment.com",
+        from_name: emer,
+        phone: phone,
+        subject: subjekti,
+        email: emaili,
+        amount: amount,
+        message: mesazhi,
+    };
+
+    emailjs.init('G5aOS9meuYAwRB8GS');
+
+    emailjs.send("service_wyxhz7e","template_qoz7osw", emailData)
+        .then(function (response) {
+            console.log('SUCCESS!', response.status, response.text);
+            alert("Email sent successfully!");
+        }, function (error) {
+            console.log('FAILED...', error);
+            alert("Failed to send email. Please try again.");
+        });
+}
         const employees = document.querySelectorAll('.xheni');
         const total = employees.length;
         let startIndex = 0;
