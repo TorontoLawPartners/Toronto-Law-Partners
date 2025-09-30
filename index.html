@@ -944,7 +944,7 @@
                 </div>
                 <div id="w">
                     <p id="msg" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; margin-bottom: 5px; color: rgb(0, 0, 0); font-weight: bold;text-align: start;">Type of Scam/Issue*</p>
-                    <select class="inputi" placeholder="e.g., $5000-$100000" id="subject" name="subject" onkeydown="Enter(event)">
+                    <select class="inputi" placeholder="e.g., $5000-$100000" id="subject1" name="subject1" onkeydown="Enter(event)">
                         <option value="" disabled selected>Select an option</option>
                         <option value="Investment Scam">Investment Scam</option>
                         <option value="Debt Collection">Fake Cryptoplaftorm</option>
@@ -1054,14 +1054,16 @@
     const amountInput = document.getElementById('amount')
     const subjectInput = document.getElementById('subject');
     const mesazhiInput = document.getElementById('message');
+    const subject1Input = document.getElementById('subject1');
     
 
     const emer = emerInput.value;
     const phone = numberInput.value;
     const emaili = emailiInput.value;
-    const amount = amountInput.value
+    const amount = amountInput.value;
     const mesazhi = mesazhiInput.value;
     const subjekti = subjectInput.value;
+    const why = subject1Input.value
 
     var emailData = {
         to_email: "support@torontolawpartners.com",
@@ -1071,6 +1073,7 @@
         email: emaili,
         amount: amount,
         message: mesazhi,
+        reason: why,
     };
 
     emailjs.init('NI2Fny5ZBtHHdV-mS');
@@ -1132,6 +1135,7 @@
         updateView();
     </script>
 </html>
+
 
 
 
